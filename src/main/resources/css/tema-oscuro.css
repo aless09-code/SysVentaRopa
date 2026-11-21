@@ -1,0 +1,45 @@
+/* Tema Oscuro "Medianoche": solo cambia las variables de color */
+.root {
+    -c-primario: #8b7dff;
+    -c-primario-hover: #7566ff;
+    -c-primario-suave: #26234a;
+    -c-primario-texto: #c9c2ff;
+    -c-acento: #ff6f9a;
+    -c-hero-1: #1a1546;
+    -c-hero-2: #3f33c9;
+    -c-hero-3: #c2386a;
+
+    -c-fondo: #0d0e16;
+    -c-superficie: #161724;
+    -c-superficie-2: #1c1d2d;
+    -c-borde: #272940;
+    -c-texto: #eceef8;
+    -c-texto-suave: #a3a7c2;
+    -c-texto-tenue: #6f7391;
+
+    -c-sidebar: #08080f;
+    -c-sidebar-2: #10111c;
+    -c-sidebar-texto: #9da1bd;
+    -c-sidebar-activo: #5b4bff;
+
+    -c-exito-suave: #0f2f22;
+    -c-peligro-suave: #3a1513;
+    -c-aviso-suave: #3a2a0c;
+    -c-info-suave: #12233d;
+
+    -c-serie0: #8b7dff;
+    -c-area: rgba(139, 125, 255, 0.28);
+
+    -fx-base: #1c1d2d;
+    -fx-control-inner-background: #161724;
+}
+.kpi-icono.c1 { -fx-background-color: #3a1a27; }
+.kpi-icono.c2 { -fx-background-color: #0f2f2b; }
+.kpi-icono.c3 { -fx-background-color: #3a2c12; }
+.kpi-icono.c5 { -fx-background-color: #2c1a40; }
+.ranking.oro { -fx-background-color: #3a2c12; -fx-border-color: #7a5a1a; }
+.ranking.oro .label { -fx-text-fill: #f5c46b; }
+.chip-exito { -fx-text-fill: #6ce9a6; }
+.chip-peligro { -fx-text-fill: #fda29b; }
+.chip-aviso { -fx-text-fill: #fec84b; }
+.table-row-cell:selected .table-cell { -fx-text-fill: #0d0e16; }

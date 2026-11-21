@@ -1,0 +1,25 @@
+/* Tema Rosa "Boutique": solo cambia las variables de color */
+.root {
+    -c-primario: #e0337a;
+    -c-primario-hover: #c21f63;
+    -c-primario-suave: #fde5ef;
+    -c-primario-texto: #a8124f;
+    -c-acento: #ff9f5a;
+    -c-hero-1: #5c0a33;
+    -c-hero-2: #e0337a;
+    -c-hero-3: #ff9f5a;
+
+    -c-fondo: #fdf6f9;
+    -c-superficie-2: #fff9fb;
+    -c-borde: #f4dce7;
+    -c-sidebar: #2a0619;
+    -c-sidebar-2: #3d0a25;
+    -c-sidebar-texto: #f2c6d9;
+    -c-sidebar-activo: #e0337a;
+
+    -c-serie0: #e0337a;
+    -c-serie1: #ff9f5a;
+    -c-serie5: #8b5cf6;
+    -c-area: rgba(224, 51, 122, 0.20);
+}
+.kpi-icono.c1 { -fx-background-color: #ffeedd; }

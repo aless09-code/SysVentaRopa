@@ -1,0 +1,29 @@
+/* Tema Esmeralda: solo cambia las variables de color */
+.root {
+    -c-primario: #0f9f78;
+    -c-primario-hover: #0b8463;
+    -c-primario-suave: #ddf6ee;
+    -c-primario-texto: #07694f;
+    -c-acento: #3ab0ff;
+    -c-hero-1: #04342a;
+    -c-hero-2: #0f9f78;
+    -c-hero-3: #3ab0ff;
+
+    -c-fondo: #f3f8f6;
+    -c-superficie-2: #f8fcfa;
+    -c-borde: #dfece7;
+    -c-sidebar: #06201a;
+    -c-sidebar-2: #0b2e25;
+    -c-sidebar-texto: #b5d6cb;
+    -c-sidebar-activo: #0f9f78;
+
+    -c-serie0: #0f9f78;
+    -c-serie1: #3ab0ff;
+    -c-serie2: #f5a524;
+    -c-serie3: #ff5c8a;
+    -c-area: rgba(15, 159, 120, 0.20);
+}
+.kpi-icono.c0 { -fx-background-color: #ddf6ee; }
+.kpi-icono.c1 { -fx-background-color: #dcefff; }
+.kpi-icono.c2 { -fx-background-color: #fff1d6; }
+.kpi-icono.c3 { -fx-background-color: #ffe4ec; }
