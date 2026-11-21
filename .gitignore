@@ -1,0 +1,16 @@
+# Compilados de Maven
+target/
+
+# Ejecutable generado (se publica en Releases)
+Ejecutable/
+dist/
+
+# Base de datos local (se crea sola al abrir el programa)
+data/
+*.mv.db
+*.trace.db
+
+# IDE
+.idea/
+*.iml
+.vscode/
