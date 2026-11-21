@@ -9,7 +9,7 @@ controlar el stock de prendas y saber qué vendió cada cajero. Cada usuario ent
 clave y solo ve las opciones de su perfil.
 
 ## Cómo instalarlo en Windows (sin programar nada)
-1. Entra a la sección **Releases** de este repositorio (columna derecha) y descarga `SysVentaRopa-windows.zip`.
+1. Entra a la sección **Releases** de este repositorio (columna derecha) y descarga `SysVentaRopa-ejecutable.zip`.
 2. Descomprime el zip en cualquier carpeta.
 3. Abre la carpeta `SysVentaRopa` y haz doble clic en **SysVentaRopa.exe**. No necesita tener Java instalado.
 4. Ingresa con el usuario `ventita123` y la clave `123456` (Administrador).
