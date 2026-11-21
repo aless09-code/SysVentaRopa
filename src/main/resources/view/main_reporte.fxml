@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="miContenedor" styleClass="pantalla" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysventas.controller.ReporteController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="12.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label styleClass="titulo-pantalla" text="Reportes" />
+                  <Label styleClass="subtitulo-pantalla" text="Elija un reporte, aplique los filtros y genérelo. Puede guardarlo en PDF o imprimirlo." />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- ===================== FILTROS ===================== -->
+      <VBox spacing="12.0" styleClass="card">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label styleClass="campo-label" text="REPORTE" />
+                  <ComboBox fx:id="cbxReporte" prefWidth="320.0" />
+                  <Label fx:id="lblDescripcion" styleClass="subtitulo-pantalla" wrapText="true" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <FlowPane hgap="14.0" vgap="10.0">
+               <children>
+                  <VBox fx:id="boxDesde" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="DESDE" />
+                        <DatePicker fx:id="dpDesde" prefWidth="140.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxHasta" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="HASTA" />
+                        <DatePicker fx:id="dpHasta" prefWidth="140.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxRangos" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="PERÍODO RÁPIDO" />
+                        <HBox alignment="CENTER_LEFT" spacing="2.0">
+                           <children>
+                              <Button onAction="#rangoHoy" styleClass="btn-link" text="Hoy" />
+                              <Button onAction="#rangoMes" styleClass="btn-link" text="Este mes" />
+                              <Button onAction="#rangoMesAnterior" styleClass="btn-link" text="Mes anterior" />
+                              <Button onAction="#rangoAnio" styleClass="btn-link" text="Este año" />
+                              <Button onAction="#rangoTodo" styleClass="btn-link" text="Todo" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxCliente" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="CLIENTE" />
+                        <ComboBox fx:id="cbxCliente" prefWidth="260.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxProveedor" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="PROVEEDOR" />
+                        <ComboBox fx:id="cbxProveedor" prefWidth="260.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxProducto" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="PRENDA" />
+                        <ComboBox fx:id="cbxProducto" prefWidth="240.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxCategoria" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="CATEGORÍA" />
+                        <ComboBox fx:id="cbxCategoria" prefWidth="190.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxUsuario" spacing="4.0">
+                     <children>
+                        <Label fx:id="lblUsuario" styleClass="campo-label" text="VENDEDOR" />
+                        <ComboBox fx:id="cbxUsuario" prefWidth="210.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxTexto" spacing="4.0">
+                     <children>
+                        <Label fx:id="lblTexto" styleClass="campo-label" text="BUSCAR" />
+                        <TextField fx:id="txtTexto" onAction="#generar" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxStock" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="STOCK MÁXIMO" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtStockMax" onAction="#generar" prefWidth="90.0" promptText="Ej. 10" />
+                              <CheckBox fx:id="chkStockBajo" text="Solo stock bajo (≤ 20)" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxDetalle" alignment="BOTTOM_LEFT" spacing="4.0">
+                     <children>
+                        <Label styleClass="campo-label" text="OPCIONES" />
+                        <CheckBox fx:id="chkDetalle" prefHeight="30.0" text="Incluir prendas de cada documento" />
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+            <Separator />
+            <HBox styleClass="reporte-barra">
+               <children>
+                  <Button fx:id="btnGenerar" onAction="#generar" styleClass="btn-exito" text="Generar" />
+                  <Button fx:id="btnPdf" onAction="#guardarPdf" styleClass="btn-peligro" text="Guardar PDF" />
+                  <Button fx:id="btnImprimir" onAction="#imprimir" styleClass="btn-secundario" text="Imprimir" />
+                  <Label fx:id="lblEstado" styleClass="subtitulo-pantalla">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button onAction="#alejar" styleClass="btn-secundario" text="−" />
+                  <Label fx:id="lblZoom" styleClass="reporte-zoom" text="100%" />
+                  <Button onAction="#acercar" styleClass="btn-secundario" text="+" />
+                  <Button onAction="#ajustarAncho" styleClass="btn-secundario" text="Ajustar" />
+                  <Label fx:id="lblPaginas" styleClass="subtitulo-pantalla" text="0 páginas" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+
+      <!-- ===================== VISTA PREVIA ===================== -->
+      <ScrollPane fx:id="scrollVista" fitToWidth="true" minHeight="420.0" pannable="true" styleClass="reporte-visor" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="vboxPaginas" styleClass="reporte-paginas" />
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

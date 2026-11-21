@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<!-- Dashboard de inicio: los datos se cargan desde DashboardController -->
+<VBox fx:id="raiz" styleClass="dashboard" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysventas.controller.DashboardController">
+   <fx:define>
+      <ToggleGroup fx:id="grupoPeriodo" />
+   </fx:define>
+   <children>
+
+      <!-- ===================== BANNER DE BIENVENIDA ===================== -->
+      <HBox fx:id="hero" alignment="CENTER_LEFT" styleClass="hero">
+         <children>
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblHeroFecha" styleClass="hero-fecha" text="HOY" />
+                  <Label fx:id="lblSaludo" styleClass="hero-saludo" text="Hola" />
+                  <Label fx:id="lblResumenHoy" styleClass="hero-texto" text="" wrapText="true" />
+                  <HBox fx:id="accionesBox" spacing="10.0">
+                     <VBox.margin><Insets top="10.0" /></VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox styleClass="hero-meta" alignment="CENTER_LEFT">
+               <children>
+                  <Label fx:id="lblMetaTitulo" styleClass="hero-meta-label" text="META DEL MES" />
+                  <Label fx:id="lblMetaValor" styleClass="hero-meta-valor" text="S/ 0.00" />
+                  <ProgressBar fx:id="pbMeta" maxWidth="Infinity" progress="0.0" />
+                  <Label fx:id="lblMetaDetalle" styleClass="hero-meta-label" text="" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- ===================== ENCABEZADO + PERIODO ===================== -->
+      <HBox alignment="CENTER_LEFT" spacing="12.0">
+         <children>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblTituloResumen" styleClass="titulo-pantalla" text="Resumen del negocio" />
+                  <Label fx:id="lblSubResumen" styleClass="subtitulo-pantalla" text="Indicadores del mes y del periodo elegido." />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" styleClass="segmentado">
+               <children>
+                  <ToggleButton fx:id="tg7" text="7 días" toggleGroup="$grupoPeriodo" />
+                  <ToggleButton fx:id="tg30" selected="true" text="30 días" toggleGroup="$grupoPeriodo" />
+                  <ToggleButton fx:id="tg90" text="90 días" toggleGroup="$grupoPeriodo" />
+               </children>
+            </HBox>
+            <Button fx:id="btnActualizar" onAction="#actualizar" styleClass="btn-secundario" text="Actualizar" />
+         </children>
+      </HBox>
+
+      <!-- ===================== INDICADORES ===================== -->
+      <GridPane fx:id="kpiGrid" hgap="16.0" vgap="16.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+         </columnConstraints>
+      </GridPane>
+
+      <!-- ===================== FILA 1: TENDENCIA + CATEGORÍAS ===================== -->
+      <HBox spacing="16.0">
+         <children>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="lblTituloTendencia" styleClass="card-titulo" text="Ventas del periodo" />
+                              <Label fx:id="lblSubTendencia" styleClass="card-sub" text="" />
+                           </children>
+                        </VBox>
+                        <Label fx:id="lblTotalPeriodo" styleClass="chip" text="S/ 0.00" />
+                     </children>
+                  </HBox>
+                  <AreaChart fx:id="chartVentas" animated="false" legendVisible="false" minHeight="280.0" prefHeight="300.0" VBox.vgrow="ALWAYS">
+                     <xAxis><CategoryAxis fx:id="ejeXVentas" animated="false" side="BOTTOM" /></xAxis>
+                     <yAxis><NumberAxis fx:id="ejeYVentas" animated="false" forceZeroInRange="true" minorTickVisible="false" side="LEFT" /></yAxis>
+                  </AreaChart>
+               </children>
+            </VBox>
+            <VBox minWidth="340.0" prefWidth="380.0" styleClass="card">
+               <children>
+                  <Label fx:id="lblTituloCategorias" styleClass="card-titulo" text="Ventas por categoría" />
+                  <Label fx:id="lblSubCategorias" styleClass="card-sub" text="Participación en el periodo (sin IGV)" />
+                  <StackPane fx:id="donaPane" minHeight="230.0">
+                     <children>
+                        <PieChart fx:id="pieCategorias" animated="false" clockwise="true" labelsVisible="false" legendVisible="false" maxHeight="230.0" maxWidth="230.0" minHeight="230.0" minWidth="230.0" startAngle="90.0" />
+                        <Circle fx:id="donaHueco" mouseTransparent="true" radius="62.0" styleClass="dona-centro" />
+                        <VBox alignment="CENTER" mouseTransparent="true">
+                           <children>
+                              <Label fx:id="lblDonaValor" styleClass="dona-valor" text="S/ 0" />
+                              <Label fx:id="lblDonaLabel" styleClass="dona-label" text="TOTAL" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <VBox fx:id="leyendaCategorias" spacing="8.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- ===================== FILA 2: MESES + TOP PRENDAS ===================== -->
+      <HBox spacing="16.0">
+         <children>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblTituloMeses" styleClass="card-titulo" text="Ventas vs. compras" />
+                  <Label fx:id="lblSubMeses" styleClass="card-sub" text="Últimos 6 meses (con IGV)" />
+                  <BarChart fx:id="chartMeses" animated="false" barGap="4.0" categoryGap="26.0" minHeight="270.0" prefHeight="280.0" VBox.vgrow="ALWAYS">
+                     <xAxis><CategoryAxis animated="false" side="BOTTOM" /></xAxis>
+                     <yAxis><NumberAxis fx:id="ejeYMeses" animated="false" minorTickVisible="false" side="LEFT" /></yAxis>
+                  </BarChart>
+               </children>
+            </VBox>
+            <VBox minWidth="340.0" prefWidth="380.0" styleClass="card">
+               <children>
+                  <Label fx:id="lblTituloTop" styleClass="card-titulo" text="Prendas más vendidas" />
+                  <Label fx:id="lblSubTop" styleClass="card-sub" text="Unidades vendidas en el periodo" />
+                  <VBox fx:id="listaTop" spacing="14.0">
+                     <VBox.margin><Insets top="6.0" /></VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- ===================== FILA 3: LISTAS ===================== -->
+      <GridPane hgap="16.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="40.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="30.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="30.0" />
+         </columnConstraints>
+         <children>
+            <VBox styleClass="card" GridPane.columnIndex="0" GridPane.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblTituloUltimas" styleClass="card-titulo" text="Últimas ventas" />
+                  <VBox fx:id="listaUltimas" />
+               </children>
+            </VBox>
+            <VBox styleClass="card" GridPane.columnIndex="1" GridPane.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <children>
+                        <Label fx:id="lblTituloStock" styleClass="card-titulo" text="Stock bajo" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                        <Label fx:id="lblNumStock" styleClass="chip-aviso" text="0" />
+                     </children>
+                  </HBox>
+                  <VBox fx:id="listaStock" spacing="12.0" />
+               </children>
+            </VBox>
+            <VBox styleClass="card" GridPane.columnIndex="2" GridPane.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblTituloVendedores" styleClass="card-titulo" text="Ranking de vendedores" />
+                  <VBox fx:id="listaVendedores" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</VBox>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="600.0" prefWidth="920.0" styleClass="login-fondo" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysventas.controller.LoginController">
+   <children>
+      <HBox fx:id="tarjeta" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="login-card">
+         <children>
+            <!-- ============ Panel de marca ============ -->
+            <VBox fx:id="panelMarca" prefWidth="390.0" styleClass="login-marca">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="12.0">
+                     <children>
+                        <StackPane fx:id="logo" styleClass="login-logo" />
+                        <VBox>
+                           <children>
+                              <Label style="-fx-font-size: 17px; -fx-font-weight: bold;" text="SysVentaRopa" />
+                              <Label styleClass="login-texto" text="Sistema de ventas para tiendas de ropa" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <Label styleClass="login-eslogan" text="Tu tienda, a la moda&#10;y bajo control." wrapText="true" />
+                  <Label styleClass="login-texto" text="Registra ventas en segundos, controla tu stock y mira cómo crece tu negocio con un dashboard en tiempo real." wrapText="true" />
+                  <VBox fx:id="beneficios" spacing="10.0">
+                     <VBox.margin><Insets top="10.0" /></VBox.margin>
+                  </VBox>
+                  <Region VBox.vgrow="ALWAYS" />
+                  <Label styleClass="login-texto" style="-fx-font-size: 11px;" text="© 2026 · Tienda de Ropa · Juliaca" />
+               </children>
+            </VBox>
+
+            <!-- ============ Formulario ============ -->
+            <VBox alignment="CENTER_LEFT" prefWidth="400.0" styleClass="login-form">
+               <children>
+                  <Label styleClass="login-titulo" text="Bienvenido de nuevo" />
+                  <Label styleClass="login-sub" text="Ingresa tus credenciales para continuar." />
+
+                  <Label maxWidth="Infinity" styleClass="campo-label" text="USUARIO">
+                     <VBox.margin><Insets top="22.0" /></VBox.margin>
+                  </Label>
+                  <StackPane fx:id="campoUsuario" alignment="CENTER_LEFT">
+                     <children>
+                        <TextField fx:id="usuario" onAction="#pasarAClave" promptText="Escriba su usuario" />
+                     </children>
+                  </StackPane>
+
+                  <Label maxWidth="Infinity" styleClass="campo-label" text="CLAVE">
+                     <VBox.margin><Insets top="8.0" /></VBox.margin>
+                  </Label>
+                  <StackPane fx:id="campoClave" alignment="CENTER_LEFT" styleClass="campo-clave">
+                     <children>
+                        <PasswordField fx:id="clave" onAction="#login" promptText="Escriba su clave" />
+                        <TextField fx:id="claveVisible" managed="false" onAction="#login" promptText="Escriba su clave" visible="false" />
+                        <Button fx:id="btnVerClave" focusTraversable="false" onAction="#alternarClave" styleClass="btn-icono" StackPane.alignment="CENTER_RIGHT">
+                           <StackPane.margin><Insets right="6.0" /></StackPane.margin>
+                        </Button>
+                     </children>
+                  </StackPane>
+                  <Label fx:id="lblError" maxWidth="Infinity" minHeight="20.0" styleClass="msg-error" text="" wrapText="true" />
+
+                  <Button defaultButton="true" maxWidth="Infinity" onAction="#login" styleClass="btn-primario,btn-grande" text="Ingresar al sistema">
+                     <VBox.margin><Insets top="4.0" /></VBox.margin>
+                  </Button>
+                  <Button cancelButton="true" maxWidth="Infinity" onAction="#salir" styleClass="btn-secundario" text="Salir" />
+                  <Region VBox.vgrow="ALWAYS" />
+                  <Label maxWidth="Infinity" styleClass="login-pie" text="Las claves se guardan cifradas (SHA-256 + sal)." />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</StackPane>
